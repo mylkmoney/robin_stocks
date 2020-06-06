@@ -50,6 +50,31 @@ def respond_to_challenge(challenge_id, sms_code):
     }
     return(helper.request_post(url, payload))
 
+def token_login(access_token=None, token_type=None):
+    token = '{0} {1}'.format(token_type, access_token)
+    helper.update_session('Authorization', token)
+    helper.set_login_state(True)
+
+def process_login(username=None, password=None, device_token=None, mfa_code=None, challenge_id=None):
+    expires_in = 86400
+    scope = 'internal'
+    challenge_type = 'sms'
+
+    url = urls.login_url()
+    payload = {
+        'client_id': 'c82SH0WZOsabOXGP2sxqcj34FxkvfnWRZBKlBjFS',
+        'expires_in': expires_in,
+        'grant_type': 'password',
+        'password': password,
+        'scope': scope,
+        'username': username,
+        'challenge_type': challenge_type,
+        'device_token': device_token
+    }
+    if challenge_id != None:
+        helper.update_session('X-ROBINHOOD-CHALLENGE-RESPONSE-ID', challenge_id)
+    data = helper.request_post(url, payload)
+    return data
 
 def login(username=None, password=None, expiresIn=86400, scope='internal', by_sms=True, store_session=True):
     """This function will effectivly log the user into robinhood by getting an

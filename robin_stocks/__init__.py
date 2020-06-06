@@ -26,8 +26,12 @@ from .account import get_all_positions,             \
                      build_holdings,                \
                      build_user_profile
 
-from .authentication import login, \
-                            logout
+from .authentication import generate_device_token, \
+                            process_login,         \
+                            login,                 \
+                            logout,                \
+                            respond_to_challenge,  \
+                            token_login
 
 from .crypto import load_crypto_profile,        \
                     get_crypto_currency_pairs,  \
