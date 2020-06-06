@@ -156,8 +156,12 @@ def find_options_for_stock_by_expiration(symbol, expirationDate, optionType='bot
                        and item.get('tradability') == 'tradable']
 
     for item in filteredOptions:
-        marketData = get_option_market_data_by_id(item['id'])
-        item.update(marketData)
+        try:
+            marketData = get_option_market_data_by_id(item['id'])
+            item.update(marketData)
+            # print(item)
+        except:
+            print(item['id'])
 
     return(helper.filter(filteredOptions, info))
 
