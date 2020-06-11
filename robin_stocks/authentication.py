@@ -50,6 +50,18 @@ def respond_to_challenge(challenge_id, sms_code):
     }
     return(helper.request_post(url, payload))
 
+def refresh_token(refresh_token=None):
+    url = "https://api.robinhood.com/oauth2/token/"
+    payload = {
+        "grant_type": "refresh_token",
+        "refresh_token": refresh_token,
+        "scope": "internal",
+        "client_id": "c82SH0WZOsabOXGP2sxqcj34FxkvfnWRZBKlBjFS",
+        "expires_in": 86400,
+    }
+    data = helper.request_post(url, payload)
+    return data
+
 def token_login(access_token=None, token_type=None):
     token = '{0} {1}'.format(token_type, access_token)
     helper.update_session('Authorization', token)
