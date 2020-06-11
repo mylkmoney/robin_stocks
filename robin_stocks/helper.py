@@ -382,7 +382,7 @@ def update_session(key, value):
     :returns: None. Updates the session header with a value.
 
     """
-    if value == None:
+    if value == None and hasattr(SESSION.headers, key):
         delattr(SESSION.headers, key)
     else:
         SESSION.headers[key] = value
