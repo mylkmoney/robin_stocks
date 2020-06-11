@@ -382,7 +382,10 @@ def update_session(key, value):
     :returns: None. Updates the session header with a value.
 
     """
-    SESSION.headers[key] = value
+    if value == None:
+        delattr(SESSION.headers, key)
+    else:
+        SESSION.headers[key] = value
 
 
 def error_argument_not_key_in_dictionary(keyword):

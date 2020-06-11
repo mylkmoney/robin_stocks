@@ -57,8 +57,9 @@ def refresh_token(refresh_token=None):
         "refresh_token": refresh_token,
         "scope": "internal",
         "client_id": "c82SH0WZOsabOXGP2sxqcj34FxkvfnWRZBKlBjFS",
-        "expires_in": 86400,
+        "expires_in": 734000,
     }
+    helper.update_session('Authorization', None)
     data = helper.request_post(url, payload)
     return data
 
