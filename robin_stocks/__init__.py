@@ -30,6 +30,7 @@ from .authentication import generate_device_token, \
                             process_login,         \
                             login,                 \
                             logout,                \
+                            refresh_token,         \
                             respond_to_challenge,  \
                             token_login
 
