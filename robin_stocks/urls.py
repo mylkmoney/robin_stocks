@@ -199,7 +199,11 @@ def option_positions():
 
 
 def marketdata_options(id):
-    return('https://api.robinhood.com/marketdata/options/{0}/'.format(id))
+    if isinstance(id, list):
+        id = map(option_instruments, id)
+        return('https://api.robinhood.com/marketdata/options/?instruments={0}'.format(",".join(id)))
+    else:
+        return('https://api.robinhood.com/marketdata/options/{0}/'.format(id))
 
 # pricebook
 

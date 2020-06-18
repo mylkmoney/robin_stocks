@@ -160,8 +160,8 @@ def find_options_for_stock_by_expiration(symbol, expirationDate, optionType='bot
             marketData = get_option_market_data_by_id(item['id'])
             item.update(marketData)
             # print(item)
-        except:
-            print(item['id'])
+        except Exception as e:
+            print(e)
 
     return(helper.filter(filteredOptions, info))
 
