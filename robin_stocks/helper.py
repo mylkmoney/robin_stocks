@@ -132,8 +132,6 @@ def id_for_option(symbol, expirationDate, strike, optionType='both'):
     url = 'https://api.robinhood.com/options/instruments/'
     data = request_get(url, 'pagination', payload)
 
-    print('>>>> data', data)
-
     listOfOptions = [item for item in data if item["expiration_date"] ==
                      expirationDate and float(item["strike_price"]) == float(strike)]
     if (len(listOfOptions) == 0):
