@@ -1051,7 +1051,7 @@ def order_option_credit_spread(price, symbol, quantity, spread, timeInForce='gtc
     such as the order id, the state of order (queued, confired, filled, failed, canceled, etc.), \
     the price, and the quantity.
     """
-    order_option_spread("credit", price, symbol, quantity, spread, timeInForce)
+    return order_option_spread("credit", price, symbol, quantity, spread, timeInForce)
 
 
 @helper.login_required
@@ -1077,7 +1077,7 @@ def order_option_debit_spread(price, symbol, quantity, spread, timeInForce='gtc'
     such as the order id, the state of order (queued, confired, filled, failed, canceled, etc.), \
     the price, and the quantity.
     """
-    order_option_spread("debit", price, symbol, quantity, spread, timeInForce)
+    return order_option_spread("debit", price, symbol, quantity, spread, timeInForce)
 
 
 @helper.login_required
