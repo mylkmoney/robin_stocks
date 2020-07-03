@@ -237,7 +237,6 @@ def find_options_for_stock_by_expiration_and_strike(symbol, expirationDate, stri
     data = [item for item in data if item['expiration_date'] ==
             expirationDate and item['tradability'] == 'tradable']
     for item in data:
-        print('>> item', item)
         market_data = get_option_market_data_by_id(item['id'])
         item.update(market_data)
 
